@@ -11,7 +11,7 @@ app.use(cors());
 
 app.get("/music/lyrics", async (req, res) => {
   try {
-    const result = await GetLyrics();
+    const result = await GetData();
     res.json(result);
   } catch (err) {
     console.error("SQL error", err);

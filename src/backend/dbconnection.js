@@ -3,7 +3,7 @@ import sql from "msnodesqlv8";
 const connectionString =
   "server=THOMAS\\SQLEXPRESS;Database=LyricsQuiz;Trusted_Connection=Yes;Driver={ODBC Driver 17 for SQL Server}";
 
-export function GetLyrics() {
+export function GetData() {
   return new Promise((resolve, reject) => {
     const query = "SELECT * FROM dbo.Quiz";
     sql.query(connectionString, query, (err, rows) => {
