@@ -1,7 +1,7 @@
 CREATE TABLE Quiz (
     ID INT PRIMARY KEY IDENTITY(1,1), 
-    SongTitle VARCHAR(255) NOT NULL, 
+    Title VARCHAR(255) NOT NULL, 
     Artist VARCHAR(255) NOT NULL, 
-    LyricsSnippet TEXT NOT NULL, 
+    Lyrics TEXT NOT NULL, 
     Answer VARCHAR(255) NOT NULL
 );

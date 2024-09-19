@@ -16,8 +16,38 @@ export default function App() {
       const result = await response.json();
       console.log(result);
       setLyrics(result.lyrics);
+
+      await addSongToDatabase(title, artist, result.lyrics);
     } catch (error) {
       console.error("Fetch error:", error);
+    }
+  };
+
+  const addSongToDatabase = async (
+    artist: string,
+    title: string,
+    lyrics: string
+  ) => {
+    try {
+      const response = await fetch("http://localhost:3000/music/lyrics", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Title: title,
+          Artist: artist,
+          Lyrics: lyrics,
+          Answer: artist,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add song to the database");
+      }
+      console.log("Song added to database successfully");
+    } catch (error) {
+      console.error("Database error:", error);
     }
   };
 
@@ -31,7 +61,7 @@ export default function App() {
         onChange={(e) => setArtist(e.target.value)}
         placeholder="Artist"
       />
-      <h3>title</h3>
+      <h3>Title</h3>
       <input
         type="text"
         value={title}
@@ -39,7 +69,9 @@ export default function App() {
         placeholder="Song Title"
       />
       <br />
-      <button onClick={() => fetchData(artist, title)}>Get Lyrics</button>
+      <button onClick={() => fetchData(artist, title)}>
+        Add Song / Get Lyrics
+      </button>
       <br />
       <div>{lyrics}</div>
     </>
