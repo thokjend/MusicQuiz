@@ -5,7 +5,7 @@ export default function App() {
   const [artist, setArtist] = useState("");
   const [title, setTitle] = useState("");
 
-  const fetchData = async (artist: string, title: string) => {
+  const fetchDataFromApi = async (artist: string, title: string) => {
     try {
       const response = await fetch(
         `https://api.lyrics.ovh/v1/${artist}/${title}`
@@ -69,7 +69,7 @@ export default function App() {
         placeholder="Song Title"
       />
       <br />
-      <button onClick={() => fetchData(artist, title)}>
+      <button onClick={() => fetchDataFromApi(artist, title)}>
         Add Song / Get Lyrics
       </button>
       <br />
