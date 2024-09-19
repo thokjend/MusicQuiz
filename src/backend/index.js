@@ -4,7 +4,7 @@ import cors from "cors";
 const app = express();
 const port = 3000;
 
-import { AddLyrics, GetLyrics } from "./dbconnection.js";
+import { AddLyrics, GetData, SongExists } from "./dbconnection.js";
 
 app.use(express.json());
 app.use(cors());
@@ -22,6 +22,16 @@ app.get("/music/lyrics", async (req, res) => {
 app.post("/music/lyrics", async (req, res) => {
   try {
     const { Title, Artist, Lyrics, Answer } = req.body;
+
+    console.log(`Checking if song exists: Artist=${Artist}, Title=${Title}`);
+    const exists = await SongExists(Title, Artist);
+
+    console.log(`Song exists: ${exists}`);
+
+    if (exists) {
+      return res.status(400).send("Song already exists in the database");
+    }
+
     await AddLyrics(Title, Artist, Lyrics, Answer);
     res.status(201).send("Item added successfully");
   } catch (err) {

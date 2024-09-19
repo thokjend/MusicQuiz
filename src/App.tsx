@@ -5,7 +5,12 @@ export default function App() {
   const [artist, setArtist] = useState("");
   const [title, setTitle] = useState("");
 
+  /* const cleanInput = (input: string) => input.trim().toLowerCase(); */
+
   const fetchDataFromApi = async (artist: string, title: string) => {
+    /* artist = cleanInput(artist);
+    title = cleanInput(title); */
+
     try {
       const response = await fetch(
         `https://api.lyrics.ovh/v1/${artist}/${title}`
@@ -28,6 +33,9 @@ export default function App() {
     title: string,
     lyrics: string
   ) => {
+    /* artist = cleanInput(artist);
+    title = cleanInput(title); */
+
     try {
       const response = await fetch("http://localhost:3000/music/lyrics", {
         method: "POST",
@@ -41,11 +49,14 @@ export default function App() {
           Answer: artist,
         }),
       });
-
-      if (!response.ok) {
+      if (response.ok) {
+        console.log("Song added to database successfully");
+      } else if (response.status === 400) {
+        console.error("Song already exists in the database");
+        alert("This song is already in the database.");
+      } else {
         throw new Error("Failed to add song to the database");
       }
-      console.log("Song added to database successfully");
     } catch (error) {
       console.error("Database error:", error);
     }
