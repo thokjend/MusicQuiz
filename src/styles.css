@@ -1,0 +1,44 @@
+body {
+  background-image: url("login-background.jpg");
+}
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: hsl(227, 45%, 36%);
+  border-radius: 25px;
+  background: transparent;
+  backdrop-filter: blur(1px);
+}
+.login-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+}
+
+.login-content > input {
+  margin-top: 25px;
+  width: 75%;
+  height: 30px;
+  border-radius: 50px;
+  padding-left: 10px;
+}
+
+.login-content > button {
+  width: 77%;
+  margin-top: 25px;
+  height: 35px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.login-content > button:hover {
+  background-color: hwb(208 94% 10%);
+}

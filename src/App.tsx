@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddSong from "./pages/AddSong";
 import Login from "./pages/Login";
 import Main from "./pages/Main";
+import "./styles.css";
 
 export default function App() {
   return (
