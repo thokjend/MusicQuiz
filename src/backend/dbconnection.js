@@ -7,16 +7,16 @@ export function SongExists(artist, title) {
   return new Promise((resolve, reject) => {
     const query = `SELECT COUNT(*) as count FROM dbo.Quiz WHERE Title = ? AND Artist = ?`;
 
-    console.log(`Query: ${query}`);
-    console.log(`Parameters: Title=${title}, Artist=${artist}`);
+    /* console.log(`Query: ${query}`);
+    console.log(`Parameters: Title=${title}, Artist=${artist}`); */
 
     sql.query(connectionString, query, [title, artist], (err, result) => {
       if (err) {
-        console.error(`Error during query execution: ${err}`);
+        /* console.error(`Error during query execution: ${err}`); */
         reject(err);
       } else {
-        console.log(`Query executed successfully`);
-        console.log(`Result: ${JSON.stringify(result)}`);
+        /* console.log(`Query executed successfully`);
+        console.log(`Result: ${JSON.stringify(result)}`); */
         resolve(result[0].count > 0);
       }
     });

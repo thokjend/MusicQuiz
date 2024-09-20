@@ -5,3 +5,10 @@ CREATE TABLE Quiz (
     Lyrics TEXT NOT NULL, 
     Answer VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE Person (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    Username VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL, 
+    Score INT
+);
