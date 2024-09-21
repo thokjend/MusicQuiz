@@ -4,11 +4,18 @@ export default function Login() {
       <div className="login-container">
         <div className="login-content">
           <h1>Login</h1>
-          <input type="text" placeholder="Username" />
-
-          <input type="password" placeholder="Password" />
-
+          <div className="input-box">
+            <input type="text" placeholder="Username" />
+            <i className="bx bxs-user"></i>
+          </div>
+          <div className="input-box">
+            <input type="password" placeholder="Password" />
+            <i className="bx bxs-lock-alt"></i>
+          </div>
           <button>Login</button>
+          <div>
+            don't have an account <a href=""> register</a>
+          </div>
         </div>
       </div>
     </>
