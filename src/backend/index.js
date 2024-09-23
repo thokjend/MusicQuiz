@@ -10,6 +10,7 @@ import {
   SongExists,
   CreateUser,
   UserExists,
+  LoginUser,
 } from "./dbconnection.js";
 
 app.use(express.json());
@@ -25,6 +26,19 @@ app.get("/music/lyrics", async (req, res) => {
   }
 });
 
+// work in progress
+/* -------------------------------------------------- */
+app.get("/users", async (req, res) => {
+  try {
+    const { Username, Password } = req.body;
+
+    await LoginUser(Username, Password);
+  } catch (err) {
+    console.error("SQL error", err);
+    res.status(500).send("Database insertion error");
+  }
+});
+/* -------------------------------------------------- */
 app.post("/users", async (req, res) => {
   try {
     const { Username, Password } = req.body;

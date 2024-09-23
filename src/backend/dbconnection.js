@@ -1,4 +1,4 @@
-import sql from "msnodesqlv8";
+import sql, { promises } from "msnodesqlv8";
 
 const connectionString =
   "server=THOMAS\\SQLEXPRESS;Database=LyricsQuiz;Trusted_Connection=Yes;Driver={ODBC Driver 17 for SQL Server}";
@@ -79,3 +79,18 @@ export function UserExists(username) {
     });
   });
 }
+// work in progress
+/* -------------------------------------------------- */
+export function LoginUser(username, password) {
+  return new Promise((resolve, reject) => {
+    const query = `SELECT COUNT(*) as count FROM dbo.Users WHERE Username = ? AND Password = ?`;
+    sql.query(connectionString, query, [username, password], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result[0].count > 0);
+      }
+    });
+  });
+}
+/* -------------------------------------------------- */
