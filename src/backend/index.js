@@ -4,7 +4,13 @@ import cors from "cors";
 const app = express();
 const port = 3000;
 
-import { AddLyrics, GetData, SongExists } from "./dbconnection.js";
+import {
+  AddLyrics,
+  GetData,
+  SongExists,
+  CreateUser,
+  UserExists,
+} from "./dbconnection.js";
 
 app.use(express.json());
 app.use(cors());
@@ -16,6 +22,23 @@ app.get("/music/lyrics", async (req, res) => {
   } catch (err) {
     console.error("SQL error", err);
     res.status(500).send("Database query error");
+  }
+});
+
+app.post("/users", async (req, res) => {
+  try {
+    const { Username, Password } = req.body;
+
+    const exitst = await UserExists(Username);
+    if (exitst) {
+      return res.status(400).send("Username is already in use");
+    }
+
+    await CreateUser(Username, Password);
+    res.status(201).send("User created successfully");
+  } catch (err) {
+    console.error("SQL error", err);
+    res.status(500).send("Database insertion error");
   }
 });
 

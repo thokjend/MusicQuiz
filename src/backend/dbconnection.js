@@ -53,3 +53,29 @@ export function AddLyrics(artist, title, lyrics, answer) {
     );
   });
 }
+
+export function CreateUser(username, password) {
+  return new Promise((resolve, reject) => {
+    const query = `INSERT INTO dbo.Users (Username, Password) VALUES (?,?)`;
+    sql.query(connectionString, query, [username, password], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
+export function UserExists(username) {
+  return new Promise((resolve, reject) => {
+    const query = `SELECT COUNT(*) as count FROM dbo.Users WHERE Username = ?`;
+    sql.query(connectionString, query, [username], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result[0].count > 0);
+      }
+    });
+  });
+}
