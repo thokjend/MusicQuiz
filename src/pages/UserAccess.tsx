@@ -15,7 +15,7 @@ export default function UserAccess() {
 
   const createAccount = async (username: string, password: string) => {
     try {
-      const response = await fetch("http://localhost:3000/users", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,8 +44,26 @@ export default function UserAccess() {
   };
 
   const login = async (username: string, password: string) => {
-    //link til main
-    //window.location.href = "http://localhost:5173/main";
+    try {
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Username: username,
+          Password: password,
+        }),
+      });
+
+      if (response.ok) {
+        window.location.href = "http://localhost:5173/main";
+      } else {
+        setInfoText("Login failed. Invalid username or password.");
+      }
+    } catch (error) {
+      console.error("Database error:", error);
+    }
   };
 
   return (

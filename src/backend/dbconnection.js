@@ -79,8 +79,7 @@ export function UserExists(username) {
     });
   });
 }
-// work in progress
-/* -------------------------------------------------- */
+
 export function LoginUser(username, password) {
   return new Promise((resolve, reject) => {
     const query = `SELECT COUNT(*) as count FROM dbo.Users WHERE Username = ? AND Password = ?`;
@@ -93,4 +92,3 @@ export function LoginUser(username, password) {
     });
   });
 }
-/* -------------------------------------------------- */

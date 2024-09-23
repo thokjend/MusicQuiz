@@ -26,20 +26,23 @@ app.get("/music/lyrics", async (req, res) => {
   }
 });
 
-// work in progress
-/* -------------------------------------------------- */
-app.get("/users", async (req, res) => {
+app.post("/login", async (req, res) => {
   try {
     const { Username, Password } = req.body;
 
-    await LoginUser(Username, Password);
+    const isValidUser = await LoginUser(Username, Password);
+    if (!isValidUser) {
+      return res.status(401).send("Invalid username or password");
+    }
+
+    res.status(200).send("Login successful");
   } catch (err) {
     console.error("SQL error", err);
-    res.status(500).send("Database insertion error");
+    res.status(500).send("Database error");
   }
 });
-/* -------------------------------------------------- */
-app.post("/users", async (req, res) => {
+
+app.post("/register", async (req, res) => {
   try {
     const { Username, Password } = req.body;
 
