@@ -3,9 +3,9 @@ import { useState } from "react";
 export default function UserAccess() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [registerMode, setRegisterMode] = useState(false);
   const [infoText, setInfoText] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [registerMode, setRegisterMode] = useState(false);
 
   const reset = () => {
     setUsername("");
