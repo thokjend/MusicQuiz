@@ -132,3 +132,18 @@ html {
   align-items: center;
   border: 1px solid black;
 }
+
+/* Add song */
+
+.addsong-background {
+  background: url("addSong-background.jpg") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}

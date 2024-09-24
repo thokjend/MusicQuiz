@@ -4,6 +4,7 @@ export default function AddSong() {
   const [lyrics, setLyrics] = useState("");
   const [artist, setArtist] = useState("");
   const [title, setTitle] = useState("");
+  const [infoText, setInfoText] = useState("");
 
   const fetchDataFromApi = async (artist: string, title: string) => {
     /* artist = cleanInput(artist);
@@ -62,27 +63,29 @@ export default function AddSong() {
 
   return (
     <>
-      <h1>Add Song</h1>
-      <h3>Artist</h3>
-      <input
-        type="text"
-        value={artist}
-        onChange={(e) => setArtist(e.target.value)}
-        placeholder="Artist"
-      />
-      <h3>Title</h3>
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Song Title"
-      />
-      <br />
-      <button onClick={() => fetchDataFromApi(artist, title)}>
-        Add Song / Get Lyrics
-      </button>
-      <br />
-      <div>{lyrics}</div>
+      <div className="addsong-background">
+        <h1>Add Song</h1>
+        <h3>Artist</h3>
+        <input
+          type="text"
+          value={artist}
+          onChange={(e) => setArtist(e.target.value)}
+          placeholder="Artist"
+        />
+        <h3>Title</h3>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Song Title"
+        />
+        <br />
+        <button onClick={() => fetchDataFromApi(artist, title)}>
+          Add Song / Get Lyrics
+        </button>
+        <br />
+        <div>{lyrics}</div>
+      </div>
     </>
   );
 }
