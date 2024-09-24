@@ -2,8 +2,8 @@ import { useState } from "react";
 
 export default function AddSong() {
   const [lyrics, setLyrics] = useState("");
-  const [artist, setArtist] = useState("");
-  const [title, setTitle] = useState("");
+  const [artist, setArtist] = useState("dream theater");
+  const [title, setTitle] = useState("pull me under");
   const [infoText, setInfoText] = useState("");
 
   const fetchDataFromApi = async (artist: string, title: string) => {
@@ -18,7 +18,7 @@ export default function AddSong() {
         throw new Error("Network response was not ok");
       }
       const result = await response.json();
-      console.log(result);
+      console.log(result.lyrics);
       setLyrics(result.lyrics);
 
       await addSongToDatabase(title, artist, result.lyrics);
@@ -84,7 +84,7 @@ export default function AddSong() {
           Add Song / Get Lyrics
         </button>
         <br />
-        <div>{lyrics}</div>
+        <pre className="lyrics-container">{lyrics}</pre>
       </div>
     </>
   );
