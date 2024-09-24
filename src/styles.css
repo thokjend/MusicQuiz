@@ -1,7 +1,21 @@
-body {
+/* common */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+/* Login */
+.background-login {
   background: url("login-background.jpg") no-repeat;
   background-size: cover;
+  height: 100vh;
 }
+
 .login-container {
   position: absolute;
   top: 50%;
@@ -109,4 +123,12 @@ body {
 
 .error-text {
   color: red;
+}
+/* Main */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
 }

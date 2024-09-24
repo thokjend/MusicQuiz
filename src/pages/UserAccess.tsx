@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { InputBox } from "../components/InputBox";
+import { AuthButton } from "../components/AuthButton";
+import { InfoText } from "../components/InfoText";
 
 export default function UserAccess() {
   const [username, setUsername] = useState("");
@@ -68,71 +71,62 @@ export default function UserAccess() {
 
   return (
     <>
-      <div className="login-container">
-        <div className="login-content">
-          <h1>{!registerMode ? "Login" : "Register"}</h1>
-          <div className="input-box">
-            <input
+      <div className="background-login">
+        <div className="login-container">
+          <div className="login-content">
+            <h1>{!registerMode ? "Login" : "Register"}</h1>
+            <InputBox
               type="text"
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              icon="bx bxs-user"
             />
-            <i className="bx bxs-user"></i>
-          </div>
-          <div className="input-box">
-            <input
+            <InputBox
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              icon="bx bxs-lock-alt"
             />
-            <i className="bx bxs-lock-alt"></i>
-          </div>
-          <button
-            onClick={() => {
-              if (!registerMode) {
-                login(username, password);
-              } else {
-                createAccount(username, password);
-              }
-            }}
-            disabled={username === "" || password === ""}
-            className={
-              username !== "" && password !== "" ? "active-button" : ""
-            }
-          >
-            {!registerMode ? "Login" : "Create Account"}
-          </button>
-          {!registerMode ? (
-            <div className="auth-content">
-              Don't have an account?{" "}
-              <span
-                onClick={() => {
-                  setRegisterMode(true);
-                  reset();
-                }}
-              >
-                Register
-              </span>
-            </div>
-          ) : (
-            <div className="auth-content">
-              Already have an account?{" "}
-              <span
-                onClick={() => {
-                  setRegisterMode(false);
-                  reset();
-                }}
-              >
-                Login
-              </span>
-            </div>
-          )}
-          <div
-            className={`info-text ${isSuccess ? "success-text" : "error-text"}`}
-          >
-            {infoText}
+            <AuthButton
+              onClick={() => {
+                if (!registerMode) {
+                  login(username, password);
+                } else {
+                  createAccount(username, password);
+                }
+              }}
+              disabled={username === "" || password === ""}
+              buttonText={!registerMode ? "Login" : "Create Account"}
+              isActive={username !== "" && password !== ""}
+            />
+            {!registerMode ? (
+              <div className="auth-content">
+                Don't have an account?{" "}
+                <span
+                  onClick={() => {
+                    setRegisterMode(true);
+                    reset();
+                  }}
+                >
+                  Register
+                </span>
+              </div>
+            ) : (
+              <div className="auth-content">
+                Already have an account?{" "}
+                <span
+                  onClick={() => {
+                    setRegisterMode(false);
+                    reset();
+                  }}
+                >
+                  Login
+                </span>
+              </div>
+            )}
+            <InfoText message={infoText} isSuccess={isSuccess} />
           </div>
         </div>
       </div>
