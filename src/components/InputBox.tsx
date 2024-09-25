@@ -1,4 +1,5 @@
 interface InputBoxProps {
+  className: string;
   type: string;
   placeholder: string;
   value: string;
@@ -7,6 +8,7 @@ interface InputBoxProps {
 }
 
 export function InputBox({
+  className,
   type,
   placeholder,
   value,
@@ -14,14 +16,14 @@ export function InputBox({
   icon,
 }: InputBoxProps) {
   return (
-    <div className="input-box">
+    <div className={className}>
       <input
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
       />
-      <i className={icon}></i>
+      {icon && icon !== "none" && <i className={icon}></i>}
     </div>
   );
 }

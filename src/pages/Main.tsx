@@ -1,27 +1,28 @@
+import { Button } from "../components/Button";
+import { Header } from "../components/Header";
+
 export default function Main() {
   return (
     <div className="background-main">
+      <Header></Header>
       <div className="main-container">
-        <h1>Welcome, logged in user goes here</h1>
-        <button
+        <h1>Welcome Username</h1>
+        <Button
           onClick={() => (window.location.href = "http://localhost:5173/quiz")}
-        >
-          Quiz
-        </button>
-        <button
+          buttonText="Quiz"
+        ></Button>
+        <Button
           onClick={() =>
             (window.location.href = "http://localhost:5173/addsong")
           }
-        >
-          Add song
-        </button>
-        <button
+          buttonText="Add song"
+        ></Button>
+        <Button
           onClick={() =>
             (window.location.href = "http://localhost:5173/highscores")
           }
-        >
-          Highscores
-        </button>
+          buttonText="Highscores"
+        ></Button>
       </div>
     </div>
   );

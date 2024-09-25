@@ -72,10 +72,11 @@ export default function UserAccess() {
   return (
     <>
       <div className="background-login">
-        <div className="login-container">
+        <div className="container">
           <div className="login-content">
             <h1>{!registerMode ? "Login" : "Register"}</h1>
             <InputBox
+              className="input-box"
               type="text"
               placeholder="Username"
               value={username}
@@ -83,6 +84,7 @@ export default function UserAccess() {
               icon="bx bxs-user"
             />
             <InputBox
+              className="input-box"
               type="password"
               placeholder="Password"
               value={password}

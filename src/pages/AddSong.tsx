@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { Header } from "../components/Header";
+import { Button } from "../components/Button";
+import { InputBox } from "../components/InputBox";
 
 export default function AddSong() {
   const [lyrics, setLyrics] = useState("");
-  const [artist, setArtist] = useState("dream theater");
-  const [title, setTitle] = useState("pull me under");
-  const [infoText, setInfoText] = useState("");
+  const [artist, setArtist] = useState("");
+  const [title, setTitle] = useState("");
+  /* const [infoText, setInfoText] = useState(""); */
 
   const fetchDataFromApi = async (artist: string, title: string) => {
     /* artist = cleanInput(artist);
@@ -64,26 +67,31 @@ export default function AddSong() {
   return (
     <>
       <div className="addsong-background">
-        <h1>Add Song</h1>
-        <h3>Artist</h3>
-        <input
-          type="text"
-          value={artist}
-          onChange={(e) => setArtist(e.target.value)}
-          placeholder="Artist"
-        />
-        <h3>Title</h3>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Song Title"
-        />
-        <br />
-        <button onClick={() => fetchDataFromApi(artist, title)}>
-          Add Song / Get Lyrics
-        </button>
-        <br />
+        <Header></Header>
+        <div className="addsong-container">
+          <h1>Add Song</h1>
+          <InputBox
+            className=""
+            type="text"
+            value={artist}
+            onChange={(e) => setArtist(e.target.value)}
+            placeholder="Artist"
+            icon="none"
+          ></InputBox>
+          <InputBox
+            className=""
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Song Title"
+            icon="none"
+          ></InputBox>
+          <Button
+            onClick={() => fetchDataFromApi(artist, title)}
+            buttonText="Add Song / Get Lyrics"
+          ></Button>
+        </div>
+
         <pre className="lyrics-container">{lyrics}</pre>
       </div>
     </>

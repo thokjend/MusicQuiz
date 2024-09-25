@@ -1,4 +1,4 @@
-/* common */
+/* Global styles */
 body,
 html {
   margin: 0;
@@ -9,6 +9,41 @@ html {
 #root {
   height: 100%;
 }
+
+/*  Header */
+.header {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  font-size: 1.2em;
+  color: white;
+}
+
+.header ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.header div {
+  width: 25%;
+  padding-left: 50px;
+}
+
+.header ul li {
+  list-style-type: none;
+  padding: 10px 20px;
+}
+
+.header ul li:hover {
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 /* Login */
 .background-login {
   background: url("login-background.jpg") no-repeat;
@@ -16,7 +51,7 @@ html {
   height: 100vh;
 }
 
-.login-container {
+.container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -41,6 +76,21 @@ html {
   font-size: 3em;
   margin-bottom: 10px;
 }
+
+.login-content input {
+  width: 75%;
+  height: 30px;
+  border-radius: 50px;
+  padding-left: 15px;
+  border: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255);
+  color: rgb(255, 255, 255);
+}
+
 .input-box {
   width: 100%;
   margin-top: 25px;
@@ -125,12 +175,49 @@ html {
   color: red;
 }
 /* Main */
-.main-container {
+
+.background-main {
+  background: url("main-background.jpg") no-repeat;
+  background-size: cover;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  border: 1px solid black;
+}
+
+.main-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: 400px;
+  height: 350px;
+  border-radius: 25px;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.main-container button {
+  border-radius: 50px;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255);
+  color: white;
+  width: 75%;
+  margin-bottom: 40px;
+}
+.main-container button:hover {
+  border: 2px solid rgba(255, 255, 255);
+  cursor: pointer;
 }
 
 /* Add song */
@@ -141,11 +228,63 @@ html {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  padding: 20px;
   box-sizing: border-box;
   overflow: auto;
+  color: white;
+}
+
+.addsong-container {
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  padding-bottom: 10px;
+  margin-top: 100px;
+}
+
+.addsong-container input {
+  font-size: 1.2em;
+  margin: 10px;
+  font-weight: bold;
+  border-radius: 50px;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255);
+  color: rgb(255, 255, 255);
+}
+
+.addsong-container input:focus {
+  outline: none;
+  border: 2px solid rgba(255, 255, 255);
+}
+
+.addsong-container input::placeholder {
+  color: white;
+}
+
+.addsong-container button {
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255);
+  color: white;
+  font-size: 1.3em;
+  font-weight: bold;
+  border-radius: 25px;
+  width: 90%;
+}
+
+.addsong-container button:hover {
+  border: 2px solid rgba(255, 255, 255);
+  cursor: pointer;
 }
 
 .lyrics-container {
