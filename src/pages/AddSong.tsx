@@ -9,7 +9,11 @@ export default function AddSong() {
   const [title, setTitle] = useState("");
   /* const [infoText, setInfoText] = useState(""); */
 
-  const fetchDataFromApi = async (artist: string, title: string) => {
+  const fetchDataFromApi = async (
+    artist: string,
+    title: string,
+    add: boolean
+  ) => {
     /* artist = cleanInput(artist);
     title = cleanInput(title); */
 
@@ -22,9 +26,12 @@ export default function AddSong() {
       }
       const result = await response.json();
       console.log(result.lyrics);
-      setLyrics(result.lyrics);
 
-      await addSongToDatabase(title, artist, result.lyrics);
+      if (add) {
+        await addSongToDatabase(title, artist, result.lyrics);
+      } else {
+        setLyrics(result.lyrics);
+      }
     } catch (error) {
       console.error("Fetch error:", error);
     }
@@ -87,8 +94,12 @@ export default function AddSong() {
             icon="none"
           ></InputBox>
           <Button
-            onClick={() => fetchDataFromApi(artist, title)}
-            buttonText="Add Song / Get Lyrics"
+            onClick={() => fetchDataFromApi(artist, title, true)}
+            buttonText="Add Song"
+          ></Button>
+          <Button
+            onClick={() => fetchDataFromApi(artist, title, false)}
+            buttonText="Get Lyrics"
           ></Button>
         </div>
 
