@@ -1,9 +1,10 @@
 export function Header() {
+  const username = localStorage.getItem("loggedInUser");
   return (
     <div className="header">
       <div>
         <i className="bx bx-user"></i>
-        Username
+        <span className="username-text">{username}</span>
       </div>
       <ul>
         <li

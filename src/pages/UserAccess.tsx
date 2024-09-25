@@ -60,6 +60,7 @@ export default function UserAccess() {
       });
 
       if (response.ok) {
+        localStorage.setItem("loggedInUser", username);
         window.location.href = "http://localhost:5173/main";
       } else {
         setInfoText("Login failed. Invalid username or password.");
