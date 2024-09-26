@@ -11,6 +11,7 @@ import {
   CreateUser,
   UserExists,
   LoginUser,
+  GetUsers,
 } from "./dbconnection.js";
 
 app.use(express.json());
@@ -22,6 +23,16 @@ app.get("/music/lyrics", async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error("SQL error", err);
+    res.status(500).send("Database query error");
+  }
+});
+
+app.get("/users", async (req, res) => {
+  try {
+    const result = await GetUsers();
+    res.json(result);
+  } catch (err) {
+    console.log("SQL error", err);
     res.status(500).send("Database query error");
   }
 });

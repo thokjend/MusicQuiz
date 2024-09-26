@@ -301,3 +301,130 @@ html {
   color: rgb(255, 255, 255);
   text-align: center;
 }
+/* Highscores styles */
+.highscore-background {
+  background: url("highscore-background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.highscore-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #001f3f; /* Dark blue background */
+  color: white; /* White text */
+  padding: 20px;
+  border-radius: 10px;
+  width: 600px;
+  margin: auto;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+.highscore-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #0074d9; /* Light blue border */
+  font-size: 18px;
+}
+
+table thead {
+  background-color: #0074d9; /* Light blue header background */
+  color: white;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #001f3f;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #003366;
+}
+
+table tbody tr:hover {
+  background-color: #0074d9; /* Light blue hover */
+  cursor: pointer;
+}
+
+table td:first-child {
+  font-weight: bold;
+}
+
+table td {
+  color: white;
+}
+
+/* Quiz styles */
+.quiz-background {
+  background-color: #001f3f;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.quiz-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  height: 100%;
+  margin: auto;
+  color: white;
+}
+
+.question-container {
+  border: 2px solid white;
+  border-radius: 50px;
+  height: 50%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.answer-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  padding-bottom: 50px;
+}
+
+.answer-container div {
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  height: 100px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.answer-container div:hover {
+  border: 2px solid rgba(255, 255, 255);
+  cursor: pointer;
+}

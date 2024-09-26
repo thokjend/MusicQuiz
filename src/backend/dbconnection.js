@@ -36,6 +36,23 @@ export function GetData() {
   });
 }
 
+export function GetUsers() {
+  return new Promise((resolve, reject) => {
+    const query =
+      " SELECT ID, Username, Score\
+                    From dbo.Users\
+                    WHERE Score > 0 \
+                    ORDER BY Score DESC";
+    sql.query(connectionString, query, (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+}
+
 export function AddLyrics(artist, title, lyrics, answer) {
   return new Promise((resolve, reject) => {
     const query = `INSERT INTO dbo.Quiz (Title, Artist, Lyrics, Answer) VALUES (?, ?, ?, ?)`;
