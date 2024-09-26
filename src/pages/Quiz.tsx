@@ -6,7 +6,7 @@ export default function Quiz() {
       <Header></Header>
       <div className="quiz-container">
         <h1>What's the name of the artist with this lyric?</h1>
-        <div className="question-container">asd</div>
+        <div className="question-container"></div>
         <div className="answer-container">
           <div>aaasdfsd</div>
           <div>basdfsdfa</div>
