@@ -393,12 +393,13 @@ table td {
   border: 2px solid white;
   border-radius: 50px;
   height: 50%;
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
+  text-align: center;
 }
 
 .answer-container {
