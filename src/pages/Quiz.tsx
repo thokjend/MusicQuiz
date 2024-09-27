@@ -5,6 +5,7 @@ import { Header } from "../components/Header";
 export default function Quiz() {
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState<string[]>([]);
+  const [correctAnswer, setCorrectAnswer] = useState("");
 
   const fetchQuestion = async () => {
     try {
@@ -18,6 +19,7 @@ export default function Quiz() {
       const randomElement = result[randomIndex];
       const randomLyrics = randomElement.Lyrics;
       const correctAnswer = randomElement.Answer;
+      setCorrectAnswer(correctAnswer);
 
       const lines = randomLyrics
         .split("\n")
@@ -51,6 +53,15 @@ export default function Quiz() {
     }
   };
 
+  const submitAnswer = (answer: string) => {
+    if (answer !== correctAnswer) {
+      fetchQuestion();
+    }
+    increasePoints();
+  };
+
+  const increasePoints = () => {};
+
   useEffect(() => {
     fetchQuestion();
   }, []);
@@ -63,7 +74,9 @@ export default function Quiz() {
         <pre className="question-container">{question}</pre>
         <div className="answer-container">
           {answers.map((answer, index) => (
-            <div key={index}>{answer}</div>
+            <div onClick={() => submitAnswer(answer)} key={index}>
+              {answer}
+            </div>
           ))}
         </div>
       </div>
