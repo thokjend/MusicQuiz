@@ -3,7 +3,7 @@ import sql, { promises } from "msnodesqlv8";
 const connectionString =
   "server=THOMAS\\SQLEXPRESS;Database=LyricsQuiz;Trusted_Connection=Yes;Driver={ODBC Driver 17 for SQL Server}";
 
-export function SongExists(artist, title) {
+export function SongExists(title, artist) {
   return new Promise((resolve, reject) => {
     const query = `SELECT COUNT(*) as count FROM dbo.Quiz WHERE Title = ? AND Artist = ?`;
 
@@ -53,7 +53,7 @@ export function GetUsers() {
   });
 }
 
-export function AddLyrics(artist, title, lyrics, answer) {
+export function AddLyrics(title, artist, lyrics, answer) {
   return new Promise((resolve, reject) => {
     const query = `INSERT INTO dbo.Quiz (Title, Artist, Lyrics, Answer) VALUES (?, ?, ?, ?)`;
     sql.query(

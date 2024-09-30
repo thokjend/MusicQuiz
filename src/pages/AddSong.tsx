@@ -7,7 +7,6 @@ export default function AddSong() {
   const [lyrics, setLyrics] = useState("");
   const [artist, setArtist] = useState("");
   const [title, setTitle] = useState("");
-  /* const [infoText, setInfoText] = useState(""); */
 
   const fetchDataFromApi = async (
     artist: string,
@@ -38,13 +37,10 @@ export default function AddSong() {
   };
 
   const addSongToDatabase = async (
-    artist: string,
     title: string,
+    artist: string,
     lyrics: string
   ) => {
-    /* artist = cleanInput(artist);
-    title = cleanInput(title); */
-
     try {
       const response = await fetch("http://localhost:3000/music/lyrics", {
         method: "POST",
@@ -55,11 +51,12 @@ export default function AddSong() {
           Title: title,
           Artist: artist,
           Lyrics: lyrics,
-          Answer: artist,
+          Answer: title,
         }),
       });
       if (response.ok) {
         console.log("Song added to database successfully");
+        alert("Song added to database.");
       } else if (response.status === 400) {
         console.error("Song already exists in the database");
         alert("This song is already in the database.");
@@ -102,7 +99,6 @@ export default function AddSong() {
             buttonText="Get Lyrics"
           ></Button>
         </div>
-
         <pre className="lyrics-container">{lyrics}</pre>
       </div>
     </>
