@@ -1,10 +1,12 @@
 export function Header() {
-  const username = localStorage.getItem("loggedInUser");
+  const username = localStorage.getItem("loggedInUser") || "";
   return (
     <div className="header">
       <div>
         <i className="bx bx-user"></i>
-        <span className="username-text">{username}</span>
+        <span className="username-text">
+          {username?.charAt(0).toUpperCase() + username?.slice(1)}
+        </span>
       </div>
       <ul>
         <li

@@ -109,3 +109,16 @@ export function LoginUser(username, password) {
     });
   });
 }
+
+export function IncreasePoints(username) {
+  return new Promise((resolve, reject) => {
+    const query = `UPDATE dbo.Users SET Score = Score + 1 WHERE Username = ?`;
+    sql.query(connectionString, query, [username], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}

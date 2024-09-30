@@ -12,18 +12,20 @@ import {
   UserExists,
   LoginUser,
   GetUsers,
+  IncreasePoints,
 } from "./dbconnection.js";
 
 app.use(express.json());
 app.use(cors());
 
-app.get("/music/lyrics", async (req, res) => {
+app.put("/users/:name", async (req, res) => {
   try {
-    const result = await GetData();
-    res.json(result);
+    const { Username } = req.body;
+    await IncreasePoints(Username);
+    res.status(201).send("Score successfully updated");
   } catch (err) {
     console.error("SQL error", err);
-    res.status(500).send("Database query error");
+    res.status(500).send("Database insertion error");
   }
 });
 
@@ -33,6 +35,16 @@ app.get("/users", async (req, res) => {
     res.json(result);
   } catch (err) {
     console.log("SQL error", err);
+    res.status(500).send("Database query error");
+  }
+});
+
+app.get("/music/lyrics", async (req, res) => {
+  try {
+    const result = await GetData();
+    res.json(result);
+  } catch (err) {
+    console.error("SQL error", err);
     res.status(500).send("Database query error");
   }
 });

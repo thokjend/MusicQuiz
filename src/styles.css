@@ -411,7 +411,7 @@ table td {
   padding-bottom: 50px;
 }
 
-.answer-container div {
+.answer-container button {
   border: 3px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 500px;
@@ -422,9 +422,21 @@ table td {
   align-items: center;
   font-size: 2em;
   font-weight: bold;
+  background-color: #001f3f;
+  color: white;
 }
 
-.answer-container div:hover {
+.answer-container button.hoverable:hover {
   border: 2px solid rgba(255, 255, 255);
   cursor: pointer;
+}
+
+button.correct-answer {
+  color: green;
+  border: 3px solid green;
+}
+
+button.wrong-answer {
+  color: red;
+  border: 3px solid red;
 }

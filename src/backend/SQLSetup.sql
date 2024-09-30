@@ -6,9 +6,9 @@ CREATE TABLE Quiz (
     Answer VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Person (
+CREATE TABLE Users (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Username VARCHAR(255) NOT NULL,
     Password VARCHAR(255) NOT NULL, 
-    Score INT
+    Score INT DEFAULT 0
 );

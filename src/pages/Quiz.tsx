@@ -6,6 +6,8 @@ export default function Quiz() {
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState<string[]>([]);
   const [correctAnswer, setCorrectAnswer] = useState("");
+  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
+  const username = localStorage.getItem("loggedInUser");
 
   const fetchQuestion = async () => {
     try {
@@ -47,20 +49,36 @@ export default function Quiz() {
       );
 
       setAnswers(allAnswers);
-      console.log(randomLyrics);
+      setChosenAnswer(null);
     } catch (error) {
       console.log("Fetch error:", error);
     }
   };
 
   const submitAnswer = (answer: string) => {
+    setChosenAnswer(answer);
     if (answer !== correctAnswer) {
-      fetchQuestion();
+      setTimeout(() => fetchQuestion(), 2000);
+    } else {
+      setTimeout(() => fetchQuestion(), 2000);
+      updateScore();
     }
-    increasePoints();
   };
 
-  const increasePoints = () => {};
+  const updateScore = async () => {
+    const response = await fetch(`http://localhost:3000/users/${username}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Username: username,
+      }),
+    });
+    if (response.ok) {
+      console.log("Score updated successfully");
+    }
+  };
 
   useEffect(() => {
     fetchQuestion();
@@ -74,9 +92,22 @@ export default function Quiz() {
         <pre className="question-container">{question}</pre>
         <div className="answer-container">
           {answers.map((answer, index) => (
-            <div onClick={() => submitAnswer(answer)} key={index}>
+            <button
+              key={index}
+              className={
+                chosenAnswer
+                  ? answer === correctAnswer
+                    ? "correct-answer"
+                    : answer === chosenAnswer
+                    ? "wrong-answer"
+                    : ""
+                  : "hoverable"
+              }
+              onClick={() => submitAnswer(answer)}
+              disabled={chosenAnswer !== null}
+            >
               {answer}
-            </div>
+            </button>
           ))}
         </div>
       </div>
