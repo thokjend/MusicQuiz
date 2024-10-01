@@ -5,7 +5,7 @@ export default function Main() {
   const username = localStorage.getItem("loggedInUser") || "";
   return (
     <div className="background-main">
-      <Header></Header>
+      <Header />
       <div className="main-container">
         <h1>
           Welcome {username?.charAt(0).toUpperCase() + username?.slice(1)}
@@ -13,19 +13,19 @@ export default function Main() {
         <Button
           onClick={() => (window.location.href = "http://localhost:5173/quiz")}
           buttonText="Quiz"
-        ></Button>
+        />
         <Button
           onClick={() =>
             (window.location.href = "http://localhost:5173/addsong")
           }
           buttonText="Add song"
-        ></Button>
+        />
         <Button
           onClick={() =>
             (window.location.href = "http://localhost:5173/highscores")
           }
           buttonText="Highscores"
-        ></Button>
+        />
       </div>
     </div>
   );

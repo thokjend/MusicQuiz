@@ -71,7 +71,7 @@ export default function AddSong() {
   return (
     <>
       <div className="addsong-background">
-        <Header></Header>
+        <Header />
         <div className="addsong-container">
           <h1>Add Song</h1>
           <InputBox
@@ -81,7 +81,7 @@ export default function AddSong() {
             onChange={(e) => setArtist(e.target.value)}
             placeholder="Artist"
             icon="none"
-          ></InputBox>
+          />
           <InputBox
             className=""
             type="text"
@@ -89,15 +89,15 @@ export default function AddSong() {
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Song Title"
             icon="none"
-          ></InputBox>
+          />
           <Button
             onClick={() => fetchDataFromApi(artist, title, true)}
             buttonText="Add Song"
-          ></Button>
+          />
           <Button
             onClick={() => fetchDataFromApi(artist, title, false)}
             buttonText="Get Lyrics"
-          ></Button>
+          />
         </div>
         <pre className="lyrics-container">{lyrics}</pre>
       </div>

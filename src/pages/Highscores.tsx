@@ -25,12 +25,12 @@ export default function Highscores() {
 
   return (
     <div className="highscore-background">
-      <Header></Header>
+      <Header />
       <div className="highscore-container">
         <h1>Quiz Highscores</h1>
         <table>
-          <TableHeader></TableHeader>
-          <TableBody data={data}></TableBody>
+          <TableHeader />
+          <TableBody data={data} />
         </table>
       </div>
     </div>

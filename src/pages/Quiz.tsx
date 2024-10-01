@@ -86,7 +86,7 @@ export default function Quiz() {
 
   return (
     <div className="quiz-background">
-      <Header></Header>
+      <Header />
       <div className="quiz-container">
         <h1>What's the name of the artist with this lyrics?</h1>
         <pre className="question-container">{question}</pre>
