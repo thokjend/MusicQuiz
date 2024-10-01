@@ -51,7 +51,7 @@ export default function AddSong() {
           Title: title,
           Artist: artist,
           Lyrics: lyrics,
-          Answer: title,
+          Answer: artist,
         }),
       });
       if (response.ok) {

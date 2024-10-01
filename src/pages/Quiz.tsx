@@ -88,7 +88,7 @@ export default function Quiz() {
     <div className="quiz-background">
       <Header></Header>
       <div className="quiz-container">
-        <h1>What's the name of the song with this lyrics?</h1>
+        <h1>What's the name of the artist with this lyrics?</h1>
         <pre className="question-container">{question}</pre>
         <div className="answer-container">
           {answers.map((answer, index) => (
@@ -106,7 +106,7 @@ export default function Quiz() {
               onClick={() => submitAnswer(answer)}
               disabled={chosenAnswer !== null}
             >
-              {answer}
+              {answer.charAt(0).toUpperCase() + answer.slice(1)}
             </button>
           ))}
         </div>
