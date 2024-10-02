@@ -2,6 +2,7 @@ import { useState } from "react";
 import { InputBox } from "../components/InputBox";
 import { AuthButton } from "../components/AuthButton";
 import { InfoText } from "../components/InfoText";
+import { createAccount, login } from "../services/userService";
 
 export default function UserAccess() {
   const [username, setUsername] = useState("");
@@ -16,7 +17,46 @@ export default function UserAccess() {
     setInfoText("");
   };
 
-  const createAccount = async (username: string, password: string) => {
+  const handleFetchData = async (
+    username: string,
+    password: string,
+    registerMode: boolean
+  ) => {
+    try {
+      let response;
+      if (registerMode) {
+        response = await createAccount(username, password);
+      } else {
+        response = await login(username, password);
+      }
+
+      if (response?.success) {
+        setInfoText(
+          registerMode ? "Success! Account created" : "Login successful"
+        );
+        setIsSuccess(true);
+        if (!registerMode) {
+          window.location.href = "http://localhost:5173/main";
+          localStorage.setItem("loggedInUser", username);
+        } else {
+          setRegisterMode(false);
+        }
+      } else {
+        setInfoText(
+          registerMode
+            ? "Account creation failed. User already exist."
+            : "Login failed. Invalid username or password."
+        );
+        setIsSuccess(false);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setInfoText("An error occurred. Please try again.");
+      setIsSuccess(false);
+    }
+  };
+
+  /* const createAccount = async (username: string, password: string) => {
     try {
       const response = await fetch("http://localhost:3000/register", {
         method: "POST",
@@ -68,7 +108,7 @@ export default function UserAccess() {
     } catch (error) {
       console.error("Database error:", error);
     }
-  };
+  }; */
 
   return (
     <>
@@ -94,6 +134,14 @@ export default function UserAccess() {
             />
             <AuthButton
               onClick={() => {
+                handleFetchData(username, password, registerMode);
+              }}
+              disabled={username === "" || password === ""}
+              buttonText={!registerMode ? "Login" : "Create Account"}
+              isActive={username !== "" && password !== ""}
+            />
+            {/* <AuthButton
+              onClick={() => {
                 if (!registerMode) {
                   login(username, password);
                 } else {
@@ -103,7 +151,7 @@ export default function UserAccess() {
               disabled={username === "" || password === ""}
               buttonText={!registerMode ? "Login" : "Create Account"}
               isActive={username !== "" && password !== ""}
-            />
+            /> */}
             {!registerMode ? (
               <div className="auth-content">
                 Don't have an account?{" "}
