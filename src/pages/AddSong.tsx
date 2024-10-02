@@ -2,69 +2,32 @@ import { useState } from "react";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
 import { InputBox } from "../components/InputBox";
+import { fetchLyricsFromApi, addSongToDatabase } from "../services/songService";
 
 export default function AddSong() {
   const [lyrics, setLyrics] = useState("");
   const [artist, setArtist] = useState("");
   const [title, setTitle] = useState("");
 
-  const fetchDataFromApi = async (
+  const handleFetchData = async (
     artist: string,
     title: string,
     add: boolean
   ) => {
-    /* artist = cleanInput(artist);
-    title = cleanInput(title); */
-
     try {
-      const response = await fetch(
-        `https://api.lyrics.ovh/v1/${artist}/${title}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const result = await response.json();
-      console.log(result.lyrics);
-
+      const resultLyrics = await fetchLyricsFromApi(artist, title);
       if (add) {
-        await addSongToDatabase(title, artist, result.lyrics);
+        const addResult = await addSongToDatabase(title, artist, resultLyrics);
+        if (addResult.success) {
+          alert("Song added to database.");
+        } else {
+          alert(addResult.message);
+        }
       } else {
-        setLyrics(result.lyrics);
+        setLyrics(resultLyrics);
       }
     } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  };
-
-  const addSongToDatabase = async (
-    title: string,
-    artist: string,
-    lyrics: string
-  ) => {
-    try {
-      const response = await fetch("http://localhost:3000/music/lyrics", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Title: title,
-          Artist: artist,
-          Lyrics: lyrics,
-          Answer: artist,
-        }),
-      });
-      if (response.ok) {
-        console.log("Song added to database successfully");
-        alert("Song added to database.");
-      } else if (response.status === 400) {
-        console.error("Song already exists in the database");
-        alert("This song is already in the database.");
-      } else {
-        throw new Error("Failed to add song to the database");
-      }
-    } catch (error) {
-      console.error("Database error:", error);
+      console.error("Error:", error);
     }
   };
 
@@ -91,11 +54,11 @@ export default function AddSong() {
             icon="none"
           />
           <Button
-            onClick={() => fetchDataFromApi(artist, title, true)}
+            onClick={() => handleFetchData(artist, title, true)}
             buttonText="Add Song"
           />
           <Button
-            onClick={() => fetchDataFromApi(artist, title, false)}
+            onClick={() => handleFetchData(artist, title, false)}
             buttonText="Get Lyrics"
           />
         </div>
