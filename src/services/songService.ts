@@ -39,7 +39,6 @@ export const addSongToDatabase = async (
       console.error("Song already exists in the database");
       return {
         success: false,
-        message: "This song is already in the database.",
       };
     } else {
       throw new Error("Failed to add song to the database");

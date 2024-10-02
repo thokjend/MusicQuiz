@@ -21,7 +21,7 @@ export default function AddSong() {
         if (addResult.success) {
           alert("Song added to database.");
         } else {
-          alert(addResult.message);
+          alert("This song is already in the database.");
         }
       } else {
         setLyrics(resultLyrics);
