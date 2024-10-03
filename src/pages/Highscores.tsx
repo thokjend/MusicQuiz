@@ -2,25 +2,18 @@ import { useEffect, useState } from "react";
 import { TableHeader } from "../components/TableHeader";
 import { TableBody } from "../components/TableBody";
 import { Header } from "../components/Header";
+import { fetchUsers } from "../services/highscoresService";
 
 export default function Highscores() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetchUsers();
+    handleFetchData();
   }, []);
 
-  const fetchUsers = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/users");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const result = await response.json();
-      setData(result);
-    } catch (error) {
-      console.log("Fetch error:", error);
-    }
+  const handleFetchData = async () => {
+    const fetchResult = await fetchUsers();
+    setData(fetchResult);
   };
 
   return (

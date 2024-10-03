@@ -31,9 +31,7 @@ export default function UserAccess() {
       }
 
       if (response?.success) {
-        setInfoText(
-          registerMode ? "Success! Account created" : "Login successful"
-        );
+        setInfoText(registerMode ? "Success! Account created" : "");
         setIsSuccess(true);
         if (!registerMode) {
           window.location.href = "http://localhost:5173/main";
@@ -55,60 +53,6 @@ export default function UserAccess() {
       setIsSuccess(false);
     }
   };
-
-  /* const createAccount = async (username: string, password: string) => {
-    try {
-      const response = await fetch("http://localhost:3000/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Username: username,
-          Password: password,
-        }),
-      });
-
-      if (response.ok) {
-        //console.log("user added to database successfully");
-        setInfoText("Success! Account created");
-        setRegisterMode(false);
-        setIsSuccess(true);
-      } else if (response.status === 400) {
-        //console.log("user already exists in the database");
-        setInfoText("A user with this username already exists.");
-        setIsSuccess(false);
-      } else {
-        throw new Error("Failed to user to the database");
-      }
-    } catch (error) {
-      console.error("Database error:", error);
-    }
-  };
-
-  const login = async (username: string, password: string) => {
-    try {
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Username: username,
-          Password: password,
-        }),
-      });
-
-      if (response.ok) {
-        localStorage.setItem("loggedInUser", username);
-        window.location.href = "http://localhost:5173/main";
-      } else {
-        setInfoText("Login failed. Invalid username or password.");
-      }
-    } catch (error) {
-      console.error("Database error:", error);
-    }
-  }; */
 
   return (
     <>
@@ -140,18 +84,6 @@ export default function UserAccess() {
               buttonText={!registerMode ? "Login" : "Create Account"}
               isActive={username !== "" && password !== ""}
             />
-            {/* <AuthButton
-              onClick={() => {
-                if (!registerMode) {
-                  login(username, password);
-                } else {
-                  createAccount(username, password);
-                }
-              }}
-              disabled={username === "" || password === ""}
-              buttonText={!registerMode ? "Login" : "Create Account"}
-              isActive={username !== "" && password !== ""}
-            /> */}
             {!registerMode ? (
               <div className="auth-content">
                 Don't have an account?{" "}
