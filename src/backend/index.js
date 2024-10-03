@@ -85,11 +85,7 @@ app.post("/register", async (req, res) => {
 app.post("/music/lyrics", async (req, res) => {
   try {
     const { Title, Artist, Lyrics, Answer } = req.body;
-
-    /* console.log(`Checking if song exists: Artist=${Artist}, Title=${Title}`); */
     const exists = await SongExists(Title, Artist);
-
-    /* console.log(`Song exists: ${exists}`); */
 
     if (exists) {
       return res.status(400).send("Song already exists in the database");
