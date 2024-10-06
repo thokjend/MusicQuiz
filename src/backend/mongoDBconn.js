@@ -16,7 +16,7 @@ const quizSchema = new mongoose.Schema(
     Lyrics: String,
     Answer: String,
   },
-  { collection: "quiz" }
+  { collection: "songInfo" }
 );
 
 const User = mongoose.model("User", userSchema);

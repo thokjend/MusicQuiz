@@ -36,7 +36,11 @@ export default function Quiz() {
       <Header />
       <div className="quiz-container">
         <h1>What's the name of the artist with this lyrics?</h1>
-        <pre className="question-container">{question}</pre>
+        <pre className="question-container">
+          {answers.length < 4
+            ? " Not enough data. Please add more songs to the database"
+            : question}
+        </pre>
         <div className="answer-container">
           {answers.map((answer, index) => (
             <button

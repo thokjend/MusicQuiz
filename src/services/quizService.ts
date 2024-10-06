@@ -6,6 +6,11 @@ export const fetchQuestionData = async () => {
     }
     const result = await response.json();
 
+    const uniqueArtists = new Set(result.map((song: any) => song.Artist));
+    if (uniqueArtists.size < 4) {
+      throw new Error("Not enough unique artists in the database");
+    }
+
     const randomIndex = Math.floor(Math.random() * result.length);
     const randomElement = result[randomIndex];
     const randomLyrics = randomElement.Lyrics;
