@@ -1,50 +1,72 @@
-# React + TypeScript + Vite
+# Music Quiz App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is a full-stack music quiz application built using React for the frontend and Node.js with Express for the backend. It utilizes the [Lyrics.ovh API](https://lyricsovh.docs.apiary.io/) to retrieve song lyrics, and a SQL Server database to store quiz data and user information. Users can log in, participate in a quiz by guessing the correct song title from lyrics, and view the highscore leaderboard.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **User Authentication:** Users can register and log in with their credentials.
+- **Song Quiz:** Users can play a quiz where they are shown lyrics and have to guess the artist.
+- **Add New Songs:** users can add new songs to the quiz.
+- **Highscores:** Users' scores are stored in the database, and the leaderboard shows the top scorers.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+- **Frontend:** React
+- **Backend** Node.js, Express
+- **Database** SQL Server
+- **API:**[Lyrics.ovh](https://lyricsovh.docs.apiary.io/)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Database Setup
+
+You can set up your own database using SQL Server. Below is the schema for the two main tables:
+
+### `Quiz` Table
+
+This table stores information about the songs for the quiz.
+
+```sql
+CREATE TABLE Quiz (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    Title VARCHAR(255) NOT NULL,
+    Artist VARCHAR(255) NOT NULL,
+    Lyrics TEXT NOT NULL,
+    Answer VARCHAR(255) NOT NULL
+);
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### `Users` Table
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+This table stores user information and keeps track of their scores.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sql
+CREATE TABLE Users (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    Username VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Score INT DEFAULT 0
+);
+```
+
+## Install
+
+```
+
+npm install concurrently
+
+```
+
+## Running the Application
+
+```
+
+npm run dev
+
+```
+
+The application will be available at `http://localhost:5173/`
+
+```
+
 ```

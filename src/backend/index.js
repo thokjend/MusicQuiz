@@ -4,17 +4,6 @@ import cors from "cors";
 const app = express();
 const port = 3000;
 
-/* import {
-  AddLyrics,
-  GetData,
-  SongExists,
-  CreateUser,
-  UserExists,
-  LoginUser,
-  GetUsers,
-  IncreasePoints,
-} from "./dbconnection.js"; */
-
 import {
   AddLyrics,
   GetData,
@@ -24,7 +13,18 @@ import {
   LoginUser,
   GetUsers,
   IncreasePoints,
-} from "./mongoDBconn.js";
+} from "./dbconnection.js";
+
+/* import {
+  AddLyrics,
+  GetData,
+  SongExists,
+  CreateUser,
+  UserExists,
+  LoginUser,
+  GetUsers,
+  IncreasePoints,
+} from "./mongoDBconn.js"; */
 
 app.use(express.json());
 app.use(cors());
