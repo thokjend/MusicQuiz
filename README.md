@@ -14,9 +14,9 @@ This is a full-stack music quiz application built using React for the frontend a
 ## Tech Stack
 
 - **Frontend:** React
-- **Backend** Node.js, Express
-- **Database** SQL Server
-- **API:**[Lyrics.ovh](https://lyricsovh.docs.apiary.io/)
+- **Backend:** Node.js, Express
+- **Database:** SQL Server
+- **API:** [Lyrics.ovh](https://lyricsovh.docs.apiary.io/)
 
 ## Database Setup
 
