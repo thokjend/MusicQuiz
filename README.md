@@ -51,13 +51,7 @@ CREATE TABLE Users (
 
 ## Environment Configuration
 
-To connect the application to your database, you need to set up your own environment variables. Create a `.env` file in the root of your project and add the following line to define your database connection string:
-
-```
-DB_CONNECTION_STRING=your_connection_string_here
-```
-
-Replace `your_connection_string_here` with your actual SQL Server connection string.
+To connect the application to your database, you need to set up your own environment variables. Create a `.env` file in the root of your project and set up your connection there
 
 ## Install
 
