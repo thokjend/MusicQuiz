@@ -26,7 +26,7 @@ You can set up your own database using SQL Server. Below is the schema for the t
 
 This table stores information about the songs for the quiz.
 
-```
+```sql
 CREATE TABLE Quiz (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Title VARCHAR(255) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE Quiz (
 
 This table stores user information and keeps track of their scores.
 
-```
+```sql
 CREATE TABLE Users (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Username VARCHAR(255) NOT NULL,
