@@ -49,6 +49,8 @@ CREATE TABLE Users (
 );
 ```
 
+Make sure to change/modify the connection to your own database in the project’s backend code (`dbconnection.js` or `mongoDBconn.js`)
+
 ## Install
 
 ```
