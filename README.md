@@ -54,7 +54,6 @@ Make sure to change/modify the connection to your own database in the project’
 ## Install
 
 ```
-
 npm install concurrently
 
 ```
@@ -62,13 +61,8 @@ npm install concurrently
 ## Running the Application
 
 ```
-
 npm run dev
 
 ```
 
 The application will be available at `http://localhost:5173/`
-
-```
-
-```
