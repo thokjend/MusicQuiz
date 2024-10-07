@@ -27,13 +27,11 @@ const Quiz = mongoose.model("Quiz", quizSchema);
 
 await mongoose.connect(process.env.MONGODB_URI);
 
-//await mongoose.connect("mongodb://localhost:27017/quiz");
-
 export async function GetUsers() {
   try {
     const users = await User.find({ Score: { $gt: 0 } })
       .sort({ Score: -1 })
-      .select("Username Score -_id"); // Select fields and exclude _id
+      .select("Username Score -_id");
     return users;
   } catch (err) {
     throw err;
@@ -76,7 +74,7 @@ export async function CreateUser(username, password) {
 export async function LoginUser(username, password) {
   try {
     const user = await User.findOne({ Username: username, Password: password });
-    return !!user; // returns true if user exists, false otherwise
+    return !!user;
   } catch (err) {
     throw err;
   }
