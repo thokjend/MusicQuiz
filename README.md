@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack music quiz application built using React for the frontend and Node.js with Express for the backend. It utilizes the [Lyrics.ovh API](https://lyricsovh.docs.apiary.io/) to retrieve song lyrics, and a SQL Server database to store quiz data and user information. Users can log in, participate in a quiz by guessing the correct song title from lyrics, and view the highscore leaderboard.
+This is a full-stack music quiz application built using React for the frontend and Node.js with Express for the backend. It utilizes the [Lyrics.ovh API](https://lyricsovh.docs.apiary.io/) to retrieve song lyrics, and a SQL Server database to store quiz data and user information. Users can log in, participate in a quiz by guessing the correct artist from lyrics, and view the highscore leaderboard.
 
 ## Features
 
