@@ -49,7 +49,9 @@ CREATE TABLE Users (
 );
 ```
 
-Make sure to change/modify the connection to your own database in the project’s backend code (`dbconnection.js` or `mongoDBconn.js`)
+## Environment Configuration
+
+Make sure to set up your own environment variables in a `.env` file in the root of the project
 
 ## Install
 
