@@ -14,8 +14,6 @@ dist-ssr
 .env
 eslint.config.js
 package-lock.json
-tsconfig.app.json
-tsconfig.node.json
 
 # Editor directories and files
 .vscode/*
