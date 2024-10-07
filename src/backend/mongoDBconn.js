@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const userSchema = new mongoose.Schema(
   {
@@ -21,7 +24,10 @@ const quizSchema = new mongoose.Schema(
 
 const User = mongoose.model("User", userSchema);
 const Quiz = mongoose.model("Quiz", quizSchema);
-await mongoose.connect("mongodb://localhost:27017/quiz");
+
+await mongoose.connect(process.env.MONGODB_URI);
+
+//await mongoose.connect("mongodb://localhost:27017/quiz");
 
 export async function GetUsers() {
   try {

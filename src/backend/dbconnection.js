@@ -1,7 +1,8 @@
 import sql, { promises } from "msnodesqlv8";
+import dotenv from "dotenv";
 
-const connectionString =
-  "server=THOMAS\\SQLEXPRESS;Database=LyricsQuiz;Trusted_Connection=Yes;Driver={ODBC Driver 17 for SQL Server}";
+dotenv.config();
+const connectionString = process.env.DB_CONNECTION_STRING;
 
 export function SongExists(title, artist) {
   return new Promise((resolve, reject) => {
